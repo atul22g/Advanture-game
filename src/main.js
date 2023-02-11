@@ -32,15 +32,15 @@ addLevel([
 // objects
 const map = addLevel([
 	"----------",
-	"┍wwwwwwww┑",
-	"l    E   r",
-	"l        r",
-	"l        r",
-	"l      $ r",
-	"l        r",
-	"l $      r",
+	"┍========┑",
+	"!    E   |",
+	"!        |",
+	"!        |",
+	"!      $ |",
+	"!        |",
+	"! $      |",
 	"┗--------┙",
-	"wwwwwwwwww",
+	"==========",
 ], {
 	width: 16,
 	height: 16,
@@ -79,7 +79,7 @@ const map = addLevel([
 		area(),
 		solid(),
 	],
-	"w": () => [
+	"=": () => [
 		sprite("wall"),
 		area(),
 		solid(),
@@ -89,12 +89,12 @@ const map = addLevel([
 		area({ height: 4, offset: vec2(0, 12) }),
 		solid(),
 	],
-	"l": () => [
+	"!": () => [
 		sprite("wall_left"),
 		area({ width: 4, }),
 		solid(),
 	],
-	"r": () => [
+	"|": () => [
 		sprite("wall_right"),
 		area({ width: 4, offset: vec2(12, 0) }),
 		solid(),
@@ -138,13 +138,6 @@ onKeyPress("space", () => {
 })
 
 const SPEED = 120
-
-// const dirs = {
-// 	"left": LEFT,
-// 	"right": RIGHT,
-// 	"up": UP,
-// 	"down": DOWN,
-// }
 
 player.onUpdate(() => {
 	camPos(player.pos)
