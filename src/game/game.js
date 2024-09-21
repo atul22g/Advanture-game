@@ -3,7 +3,7 @@ import { objects } from "../objects/SetObjects"
 import { Level } from "./level"
 const game = () => {
 
-    scene("game", () => {
+    scene("game", ({ isSword } = { isSword: 0 }) => {
         // floor
         addLevel([
             "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
@@ -44,21 +44,31 @@ const game = () => {
             origin("center"),
         ])
 
-        const sword1 = add([
+        let sword;
+
+        const swordComponents = [
             pos(),
-            sprite("sword1"),
             origin("bot"),
             rotate(0),
             follow(player, vec2(-4, 9)),
             spin(),
-        ])
+        ];
 
+        const updateSword = () => {
+            if (isSword == 1) {
+                swordComponents.push(sprite("sword0"));
+                console.log(isSword);
+            }
+            sword = add(swordComponents);
+        }
+
+        updateSword()
 
         // Controls
-        onKeyPress("space", () => {
+        // Chest and open/close
+        onKeyPress("c", () => {
             let interacted = false
             every("chest", (c) => {
-                if (player.isTouching(c)) {
                     if (c.opened) {
                         c.play("close")
                         c.opened = false
@@ -66,28 +76,42 @@ const game = () => {
                         c.play("open")
                         c.opened = true
                     }
+                    isSword += 1
+                    updateSword()
+                    isSword = 1
                     interacted = true
-                }
             })
-            if (!interacted) {
-                sword1.spin()
+        })
+        onKeyPress("space", () => {
+            if (isSword > 0) {
+                sword.spin()
+            }
+        })
+        onKeyRelease("space", () => {
+            if (isSword > 0) {
+                sword.stop()
             }
         })
 
         const SPEED = 120
 
+        // Person movement
         onKeyDown("right", () => {
             player.flipX(false)
-            sword1.flipX(false)
             player.move(SPEED, 0)
-            sword1.follow.offset = vec2(-4, 9)
+            if (isSword > 0) {
+                sword.flipX(false)
+                sword.follow.offset = vec2(-4, 9)
+            }
         })
 
         onKeyDown("left", () => {
             player.flipX(true)
-            sword1.flipX(true)
             player.move(-SPEED, 0)
-            sword1.follow.offset = vec2(4, 9)
+            if (isSword > 0) {
+                sword.flipX(true)
+                sword.follow.offset = vec2(4, 9)
+            }
         })
 
         onKeyDown("up", () => {

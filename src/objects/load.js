@@ -1,6 +1,28 @@
 const load = () => {
 	// https://0x72.itch.io/dungeontileset-ii
 	loadSpriteAtlas("sprites/dungeon.png", {
+		// Chests
+		"chest": {
+			"x": 304,
+			"y": 304,
+			"width": 48,
+			"height": 16,
+			"sliceX": 3,
+			"anims": {
+				"open": {
+					"from": 0,
+					"to": 2,
+					"speed": 20,
+					"loop": false
+				},
+				"close": {
+					"from": 2,
+					"to": 0,
+					"speed": 20,
+					"loop": false
+				}
+			}
+		},
 		// Players and enemies
 		"hero": {
 			"x": 128,
@@ -11,8 +33,8 @@ const load = () => {
 			"anims": {
 				"idle": {
 					"from": 0,
-					"to": 3,
-					"speed": 3,
+					"to": 0,
+					"speed": 2,
 					"loop": true
 				},
 				"run": {
@@ -25,12 +47,18 @@ const load = () => {
 			}
 		},
 		// Weapons
-		"sword1": {
-			"x": 322,
+		"sword0": {
+			"x": 310,
 			"y": 24,
 			"width": 12,
 			"height": 24
 		},
+		// "sword1": {
+		// 	"x": 322,
+		// 	"y": 24,
+		// 	"width": 12,
+		// 	"height": 24
+		// },
 		// Floor
 		"floor": {
 			"x": 16,
@@ -93,27 +121,7 @@ const load = () => {
 }
 
 
-// "chest": {
-// 			"x": 304,
-// 			"y": 304,
-// 			"width": 48,
-// 			"height": 16,
-// 			"sliceX": 3,
-// 			"anims": {
-// 				"open": {
-// 					"from": 0,
-// 					"to": 2,
-// 					"speed": 20,
-// 					"loop": false
-// 				},
-// 				"close": {
-// 					"from": 2,
-// 					"to": 0,
-// 					"speed": 20,
-// 					"loop": false
-// 				}
-// 			}
-// 		},
+
 // "ogre": {
 // 	"x": 16,
 // 	"y": 320,

@@ -21,6 +21,11 @@ const winLose = () => {
             origin("center"),
         ])
         add([
+            text("(c) Collect Chest", { size: 8 }),
+            pos(center().x, center().y - 25),
+            origin("center"),
+        ])
+        add([
             text("Press (s) Key to Start Game", { size: 10 }),
             pos(center().x, center().y),
             origin("center"),
