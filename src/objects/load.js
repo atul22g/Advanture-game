@@ -1,6 +1,27 @@
 const load = () => {
 	// https://0x72.itch.io/dungeontileset-ii
 	loadSpriteAtlas("sprites/dungeon.png", {
+		// water
+		"water": {
+			"x": 65,
+			"y": 45,
+			"width": 15,
+			"height": 33
+		},
+		// tower
+		"tower": {
+			"x": 95,
+			"y": 80.1,
+			"width": 18,
+			"height": 40
+		},
+		// Door
+		"door": {
+			"x": 15,
+			"y": 224,
+			"width": 60,
+			"height": 33
+		},
 		// Chests
 		"chest": {
 			"x": 304,
@@ -26,7 +47,7 @@ const load = () => {
 		// Players and enemies
 		"hero": {
 			"x": 128,
-			"y": 196,
+			"y": 100,
 			"width": 144,
 			"height": 28,
 			"sliceX": 9,
@@ -53,12 +74,12 @@ const load = () => {
 			"width": 12,
 			"height": 24
 		},
-		// "sword1": {
-		// 	"x": 322,
-		// 	"y": 24,
-		// 	"width": 12,
-		// 	"height": 24
-		// },
+		"sword1": {
+			"x": 322,
+			"y": 24,
+			"width": 12,
+			"height": 24
+		},
 		// Floor
 		"floor": {
 			"x": 16,
@@ -116,7 +137,7 @@ const load = () => {
 			"y": 144,
 			"width": 16,
 			"height": 16
-		},
+		}
 	})
 }
 

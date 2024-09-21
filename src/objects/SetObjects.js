@@ -10,9 +10,27 @@ export const objects = {
         { opened: false, },
         "chest",
     ],
+    // tower
+    "║": () => [
+        sprite("tower"),
+        area(),
+        solid(),
+    ],
+    // tower
+    "d": () => [
+        sprite("door"),
+        area(),
+        solid(),
+    ],
     // Enemy
     "E": () => [
         sprite("ogre"),
+        area(),
+        solid(),
+    ],
+    // water
+    "w": () => [
+        sprite("water"),
         area(),
         solid(),
     ],

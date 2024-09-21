@@ -37,7 +37,7 @@ const game = () => {
 
         // Player and sword1
         const player = add([
-            pos(map.getPos(2, 2)),
+            pos(map.getPos(2, 15)),
             sprite("hero", { anim: "idle" }),
             area({ width: 12, height: 12, offset: vec2(0, 6) }),
             solid(),
@@ -69,17 +69,17 @@ const game = () => {
         onKeyPress("c", () => {
             let interacted = false
             every("chest", (c) => {
-                    if (c.opened) {
-                        c.play("close")
-                        c.opened = false
-                    } else {
-                        c.play("open")
-                        c.opened = true
-                    }
-                    isSword += 1
-                    updateSword()
-                    isSword = 1
-                    interacted = true
+                if (c.opened) {
+                    c.play("close")
+                    c.opened = false
+                } else {
+                    c.play("open")
+                    c.opened = true
+                }
+                isSword += 1
+                updateSword()
+                isSword = 1
+                interacted = true
             })
         })
         onKeyPress("space", () => {
@@ -93,7 +93,7 @@ const game = () => {
             }
         })
 
-        const SPEED = 120
+        const SPEED = 80
 
         // Person movement
         onKeyDown("right", () => {
@@ -141,6 +141,10 @@ const game = () => {
         // Camera
         player.onUpdate(() => {
             camPos(player.pos)
+        })
+        // full screen
+        onKeyPress("f", () => {
+            fullscreen(!fullscreen())
         })
     })
 }
