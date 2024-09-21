@@ -1,3 +1,4 @@
+// sword1 roll function
 function spin() {
 	let spinning = false
 	return {
